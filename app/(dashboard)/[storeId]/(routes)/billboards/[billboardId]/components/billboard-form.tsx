@@ -16,7 +16,6 @@ import { Separator } from "@/components/ui/separator";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import AlertModal from "@/components/modals/alert-modal";
-import ApiAlert from "@/components/ui/api-alert";
 import useOrigin from "@/hooks/use-origin";
 import ImageUpload from "@/components/ui/image-upload";
 
@@ -57,7 +56,7 @@ export default function BillboardForm({ initialData }: BillboardProps) {
     try {
       setLoading(true);
       if(initialData){
-        await axios.post(`/api/${params.storeId}/billboards/${params.billboardId}`, data);
+        await axios.patch(`/api/${params.storeId}/billboards/${params.billboardId}`, data);
       } else {
         await axios.post(`/api/${params.storeId}/billboards`, data);  
       }
@@ -146,7 +145,6 @@ export default function BillboardForm({ initialData }: BillboardProps) {
           </Button>
         </form>
       </Form>
-      <Separator />
     </>
   )
 }
