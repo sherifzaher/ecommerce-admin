@@ -9,7 +9,7 @@ export async function GET(_req:Request, { params }: { params: { billboardId: str
       return new NextResponse("Billboard id is required", { status: 400 });
     };
 
-    const billboard = await prismadb.store.findUnique({
+    const billboard = await prismadb.billboard.findUnique({
       where: {
         id: params.billboardId,
       }
